@@ -1,0 +1,15 @@
+﻿# Local secrets and environment files
+.env
+.env.*
+!.env.example
+.netlify
+node_modules
+# Local backups and generated files
+_backups/
+*.bak
+*.backup
+# APKs are uploaded as GitHub Release assets, not committed to source
+*.apk
+*.aab
+*.keystore
+*.jks

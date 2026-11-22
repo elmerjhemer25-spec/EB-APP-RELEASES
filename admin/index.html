@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0c"><meta name="robots" content="noindex,nofollow">
+  <title>EB Admin Login | Download Center</title><link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    .auth-shell{min-height:calc(100vh - 82px);display:grid;place-items:center;padding:36px 18px}
+    .auth-card{width:min(430px,100%);padding:34px;border:1px solid #36363b;border-radius:10px;background:linear-gradient(145deg,#19191c,#101012);box-shadow:0 24px 80px #0008}
+    .auth-card h1{font-size:31px;letter-spacing:-1.3px;margin:8px 0}.auth-sub{color:#929297;font-size:12px;margin:0 0 25px}
+    .auth-field{display:block;margin:15px 0}.auth-field span{display:block;color:#aaa;font:9px var(--mono);letter-spacing:1px;margin-bottom:8px}
+    .auth-field input{width:100%;height:46px;background:#0d0d0f;border:1px solid #3b3b40;border-radius:5px;color:#eee;padding:0 13px;outline:none}
+    .auth-field input:focus{border-color:#aaa}.auth-submit{width:100%;justify-content:center;margin-top:9px;cursor:pointer}
+    .auth-error{display:none;margin-top:15px;padding:11px;border:1px solid #744848;background:#281818;color:#f0baba;border-radius:5px;font-size:11px}
+    .auth-note{color:#777;font-size:10px;line-height:1.8;margin-top:20px}.admin-content{display:none;width:min(1050px,calc(100% - 40px));margin:55px auto 80px}
+    .admin-content.ready{display:block}.admin-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #333;padding-bottom:25px;gap:18px}
+    .admin-head h1{font-size:34px;letter-spacing:-1.5px;margin:8px 0}.admin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+    .admin-tile,.admin-panel{padding:22px;border:1px solid #333;border-radius:7px;background:#171719}.admin-tile strong{display:block;font-size:23px}.admin-tile span{font:9px var(--mono);color:#888;letter-spacing:1px}
+    .admin-panel{margin-top:18px}.admin-panel p{color:#999;font-size:12px;line-height:1.8}.notice{margin-top:18px;padding:15px;border:1px solid #555;background:#1b1b1e;border-radius:5px;color:#aaa;font-size:11px;line-height:1.8}
+    .logout{border:1px solid #555;background:transparent;color:#ddd;border-radius:4px;padding:9px 14px;cursor:pointer;font-size:10px}
+    @media(max-width:650px){.admin-grid{grid-template-columns:1fr}.admin-head{align-items:flex-start;flex-direction:column}.auth-card{padding:25px}}
+  </style>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/"><span class="brand-mark">EB</span><span class="brand-copy"><strong>EB APP</strong><small>DOWNLOAD CENTER</small></span></a><a class="back" href="/" style="color:#bbb;font-size:11px">â† Public website</a></header>
+<main>
+  <section class="auth-shell" id="loginView">
+    <form class="auth-card" id="loginForm">
+      <div class="eyebrow muted">SECURE CONTROL ROOM / ADMIN</div><h1>Admin sign in.</h1>
+      <p class="auth-sub">Sign in with your authorized administrator credentials to continue.</p>
+      <label class="auth-field"><span>ADMIN EMAIL</span><input id="email" type="email" autocomplete="username" required maxlength="254" placeholder="admin@example.com"></label>
+      <label class="auth-field"><span>PASSWORD</span><input id="password" type="password" autocomplete="current-password" required minlength="12" placeholder="Enter your password"></label>
+      <button class="button button-light auth-submit" id="loginButton" type="submit">Sign in securely â†’</button>
+      <div class="auth-error" id="authError" role="alert"></div>
+      <p class="auth-note">Protected by a server-verified session. Your password is never saved in this website or browser storage.</p>
+    </form>
+  </section>
+  <section class="admin-content" id="adminView">
+    <div class="eyebrow muted">CONTROL ROOM / AUTHENTICATED</div>
+    <div class="admin-head"><div><h1>Release management.</h1><div style="color:#888;font-size:12px">Signed in as <span id="adminEmail"></span></div></div><button class="logout" id="logoutButton">Sign out â†—</button></div>
+    <div class="admin-grid"><div class="admin-tile"><strong>04</strong><span>CATALOG ENTRIES</span></div><div class="admin-tile"><strong>â€”</strong><span>PUBLISHED RELEASES</span></div><div class="admin-tile"><strong>â€”</strong><span>DOWNLOADS</span></div></div>
+    <section class="admin-panel"><div class="eyebrow muted">UPLOAD CENTER</div><h2 style="margin:8px 0">Publish a new APK</h2><p>Authentication is active. APK upload and publishing remain disabled until the Cloudflare R2 upload API, release database, and per-action authorization checks are implemented.</p><button class="button button-disabled" disabled>Upload APK â€” backend setup required</button><div class="notice"><strong style="color:#eee">Security status</strong><br>Admin login is verified by a Netlify Function. No APK upload endpoint or R2 credentials are enabled by this patch. Do not publish APKs until the upload workflow is completed and tested.</div></section>
+    <section class="admin-panel"><div class="eyebrow muted">APPLICATION CATALOG</div><h2 style="margin:8px 0">Registered applications</h2><p>EB GoRider Â· EB Map Explorer Â· Delivery Line Up Â· EB POS</p></section>
+  </section>
+</main>
+<script src="/assets/admin.js" defer></script>
+</body></html>

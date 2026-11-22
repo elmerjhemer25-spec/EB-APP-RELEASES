@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta name="description" content="EB App Download Center — official downloads for EB applications.">
+  <title>EB App Download Center</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="EB App Download Center home">
+      <span class="brand-mark">EB</span>
+      <span class="brand-copy"><strong>EB APP</strong><small>DOWNLOAD CENTER</small></span>
+    </a>
+    <nav class="nav">
+      <a href="#apps">Applications</a>
+      <a href="#about">About</a>
+      <a class="nav-admin" href="/admin/">Admin <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> THE OFFICIAL EB APP HUB</div>
+        <h1>Your EB apps.<br><span>One place.</span></h1>
+        <p class="hero-lead">A central home for the tools, platforms, and mobile applications built under the EB ecosystem.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#apps">Explore applications <span>↓</span></a>
+          <a class="button button-quiet" href="#about">About this hub</a>
+        </div>
+        <div class="hero-meta"><span>01 / APP DIRECTORY</span><span>BUILT FOR ANDROID</span></div>
+      </div>
+      <div class="hero-art" aria-label="EB monogram artwork">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="hero-emblem"><span>EB</span><small>DEVELOPMENT</small></div>
+        <div class="art-caption"><span>EST.</span><strong>EB ECOSYSTEM</strong></div>
+      </div>
+    </section>
+
+    <section class="stats-strip">
+      <div class="wrap stats-inner">
+        <div><strong>04</strong><span>APPLICATIONS LISTED</span></div>
+        <div><strong>01</strong><span>DOWNLOAD DESTINATION</span></div>
+        <div><strong>∞</strong><span>ROOM TO BUILD</span></div>
+        <div class="stats-note">A growing collection<br>of EB-built tools.</div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="apps">
+      <div class="section-heading">
+        <div><div class="eyebrow muted">THE COLLECTION / 2026</div><h2>Applications<span class="period">.</span></h2></div>
+        <p>Explore the EB applications directory. Downloads will appear here after an official release is uploaded and published.</p>
+      </div>
+      <div class="toolbar">
+        <label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Search applications..." aria-label="Search applications"></label>
+        <div class="filters" role="group" aria-label="Filter applications">
+          <button class="filter active" data-filter="all">All apps</button>
+          <button class="filter" data-filter="mobility">Mobility</button>
+          <button class="filter" data-filter="business">Business</button>
+          <button class="filter" data-filter="tools">Tools</button>
+        </div>
+      </div>
+      <div class="app-grid" id="appGrid">
+        <article class="app-card featured" data-category="mobility" data-name="EB GoRider">
+          <div class="card-top"><div class="app-icon icon-rider">GR</div><span class="status"><i></i> COMING SOON</span></div>
+          <div class="card-body"><div class="card-kicker">MOBILITY / RIDER PLATFORM</div><h3>EB GoRider</h3><p>Rider navigation and delivery workflow platform within the EB ecosystem.</p></div>
+          <div class="card-bottom"><span>NO RELEASE PUBLISHED</span><button class="details-btn" data-app="EB GoRider">View details <b>↗</b></button></div>
+        </article>
+        <article class="app-card" data-category="tools" data-name="EB Map Explorer">
+          <div class="card-top"><div class="app-icon icon-map">EM</div><span class="status"><i></i> COMING SOON</span></div>
+          <div class="card-body"><div class="card-kicker">TOOLS / NAVIGATION</div><h3>EB Map Explorer</h3><p>Map exploration and location tools for the EB platform.</p></div>
+          <div class="card-bottom"><span>NO RELEASE PUBLISHED</span><button class="details-btn" data-app="EB Map Explorer">View details <b>↗</b></button></div>
+        </article>
+        <article class="app-card" data-category="mobility" data-name="Delivery Line Up">
+          <div class="card-top"><div class="app-icon icon-delivery">DL</div><span class="status"><i></i> COMING SOON</span></div>
+          <div class="card-body"><div class="card-kicker">MOBILITY / OPERATIONS</div><h3>Delivery Line Up</h3><p>A companion workflow for coordinating delivery line-ups.</p></div>
+          <div class="card-bottom"><span>NO RELEASE PUBLISHED</span><button class="details-btn" data-app="Delivery Line Up">View details <b>↗</b></button></div>
+        </article>
+        <article class="app-card" data-category="business" data-name="EB POS">
+          <div class="card-top"><div class="app-icon icon-pos">POS</div><span class="status"><i></i> COMING SOON</span></div>
+          <div class="card-body"><div class="card-kicker">BUSINESS / RETAIL</div><h3>EB POS</h3><p>Point-of-sale tools for day-to-day business operations.</p></div>
+          <div class="card-bottom"><span>NO RELEASE PUBLISHED</span><button class="details-btn" data-app="EB POS">View details <b>↗</b></button></div>
+        </article>
+      </div>
+      <div class="empty-state" id="emptyState" hidden>No applications match your search.</div>
+      <div class="release-note"><span class="note-icon">i</span><p><strong>Release integrity matters.</strong> Only verified APK releases will receive an active download button. No placeholder or unofficial download links are shown.</p></div>
+    </section>
+
+    <section class="about-band" id="about">
+      <div class="wrap about-inner">
+        <div><div class="eyebrow muted">ONE ECOSYSTEM. MANY POSSIBILITIES.</div><h2>Built to connect.<br><span>Made to move forward.</span></h2></div>
+        <div class="about-copy"><p>EB App Download Center brings EB applications together in one simple destination. Find an app, review its release information, and download official builds when they are available.</p><span class="signature">Managed by <strong>Elmer Buencibillo</strong></span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <a class="brand footer-brand" href="/"><span class="brand-mark">EB</span><span class="brand-copy"><strong>EB APP</strong><small>DOWNLOAD CENTER</small></span></a>
+    <span>© <span id="year"></span> EB Development. All rights reserved.</span>
+    <span class="footer-owner">Managed by Elmer Buencibillo</span>
+  </footer>
+
+  <dialog id="appDialog" class="app-dialog">
+    <button class="dialog-close" id="dialogClose" aria-label="Close details">×</button>
+    <div class="eyebrow muted">APPLICATION DETAILS</div>
+    <div class="dialog-mark">EB</div>
+    <h2 id="dialogTitle">Application</h2>
+    <p id="dialogDescription"></p>
+    <div class="dialog-status">NO RELEASE PUBLISHED YET</div>
+    <button class="button button-disabled" disabled>Download unavailable</button>
+    <small>Official APK downloads will be enabled after secure storage and release publishing are configured.</small>
+  </dialog>
+  <script src="/assets/app.js"></script>
+</body>
+</html>
