@@ -160,3 +160,53 @@ async function loadGoriderRelease() {
 }
 
 loadGoriderRelease();
+
+// ---- EB RIDE MOMENTS slideshow ----
+const slides = [...document.querySelectorAll(".slide")];
+const slidePrev = document.getElementById("slidePrev");
+const slideNext = document.getElementById("slideNext");
+const slideDots = document.getElementById("slideDots");
+let slideIndex = 0;
+let slideTimer = null;
+
+function renderDots() {
+  if (!slideDots) return;
+  slideDots.innerHTML = "";
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "slide-dot" + (i === slideIndex ? " active" : "");
+    dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+    dot.addEventListener("click", () => goToSlide(i));
+    slideDots.appendChild(dot);
+  });
+}
+
+function goToSlide(i) {
+  if (!slides.length) return;
+  slideIndex = (i + slides.length) % slides.length;
+  slides.forEach((s, idx) => s.classList.toggle("active", idx === slideIndex));
+  if (slideDots) slideDots.querySelectorAll(".slide-dot").forEach((d, idx) => d.classList.toggle("active", idx === slideIndex));
+  stopTimer();
+}
+
+function startTimer() {
+  stopTimer();
+  if (!slides.length) return;
+  slideTimer = setInterval(() => goToSlide(slideIndex + 1), 6000);
+}
+function stopTimer() { if (slideTimer) { clearInterval(slideTimer); slideTimer = null; } }
+
+if (slides.length) {
+  renderDots();
+  startTimer();
+  slidePrev && slidePrev.addEventListener("click", () => goToSlide(slideIndex - 1));
+  slideNext && slideNext.addEventListener("click", () => goToSlide(slideIndex + 1));
+  if (slideDots) slideDots.addEventListener("click", event => {
+    const dot = event.target.closest(".slide-dot");
+    if (dot) goToSlide(Number(String(dot.getAttribute("aria-label")).replace(/\D/g, "")) - 1);
+  });
+}
+
+window.addEventListener("focus", startTimer);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") startTimer(); });
