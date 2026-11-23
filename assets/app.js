@@ -199,6 +199,7 @@ function stopTimer() { if (slideTimer) { clearInterval(slideTimer); slideTimer =
 
 if (slides.length) {
   renderDots();
+  goToSlide(0);
   startTimer();
   slidePrev && slidePrev.addEventListener("click", () => goToSlide(slideIndex - 1));
   slideNext && slideNext.addEventListener("click", () => goToSlide(slideIndex + 1));
