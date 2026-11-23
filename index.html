@@ -65,10 +65,16 @@
         </div>
       </div>
       <div class="app-grid" id="appGrid">
-        <article class="app-card featured" data-category="mobility" data-name="EB GoRider">
-          <div class="card-top"><div class="app-icon icon-rider">GR</div><span class="status"><i></i> COMING SOON</span></div>
+        <article class="app-card featured" data-category="mobility" data-name="EB GoRider" data-release-tag="eb-gorider-v1.0.5">
+          <div class="card-top"><div class="app-icon icon-rider">GR</div><span class="status status-available"><i></i> AVAILABLE</span></div>
           <div class="card-body"><div class="card-kicker">MOBILITY / RIDER PLATFORM</div><h3>EB GoRider</h3><p>Rider navigation and delivery workflow platform within the EB ecosystem.</p></div>
-          <div class="card-bottom"><span>NO RELEASE PUBLISHED</span><button class="details-btn" data-app="EB GoRider">View details <b>↗</b></button></div>
+          <div class="card-bottom">
+            <span class="release-summary" id="gorider-summary">Loading release…</span>
+            <div class="card-actions">
+              <a class="details-btn download-btn" id="gorider-download" href="#" aria-disabled="true" rel="noopener noreferrer">Download APK <b>↓</b></a>
+              <button class="details-btn" data-app="EB GoRider">Details <b>↗</b></button>
+            </div>
+          </div>
         </article>
         <article class="app-card" data-category="tools" data-name="EB Map Explorer">
           <div class="card-top"><div class="app-icon icon-map">EM</div><span class="status"><i></i> COMING SOON</span></div>
@@ -87,6 +93,39 @@
         </article>
       </div>
       <div class="empty-state" id="emptyState" hidden>No applications match your search.</div>
+
+      <section class="section release-section" id="release">
+        <div class="section-heading">
+          <div><div class="eyebrow muted">VERIFIED RELEASE</div><h2>EB GoRider<span class="period">.</span></h2></div>
+          <p>Official release metadata retrieved from GitHub Releases. Downloads use the published asset URL.</p>
+        </div>
+        <div class="release-card" id="gorider-release">
+          <div class="release-row"><span>Version</span><strong id="rel-version">—</strong></div>
+          <div class="release-row"><span>Build</span><strong id="rel-build">—</strong></div>
+          <div class="release-row"><span>Released</span><strong id="rel-date">—</strong></div>
+          <div class="release-row"><span>APK size</span><strong id="rel-size">—</strong></div>
+          <div class="release-row"><span>Package</span><strong>com.ebridergo.eb_rider_go</strong></div>
+          <div class="release-row"><span>SHA-256</span><code id="rel-sha">—</code></div>
+          <div class="release-actions">
+            <a class="button button-light" id="rel-download" href="#" aria-disabled="true" rel="noopener noreferrer">Download APK</a>
+            <a class="button button-quiet" id="rel-page" href="#" target="_blank" rel="noopener noreferrer">Release page</a>
+          </div>
+          <div class="release-changelog">
+            <h3>Changelog</h3>
+            <ul id="rel-changelog"></ul>
+          </div>
+          <div class="release-install">
+            <h3>Installation</h3>
+            <ol>
+              <li>Download the APK using the button above.</li>
+              <li>Allow installation from unknown sources if prompted.</li>
+              <li>Open the APK and follow the install prompts.</li>
+              <li>If upgrading from an older debug-signed build, uninstall it first.</li>
+            </ol>
+          </div>
+        </div>
+        <p class="release-status" id="rel-status">Loading release from GitHub…</p>
+      </section>
       <div class="release-note"><span class="note-icon">i</span><p><strong>Release integrity matters.</strong> Only verified APK releases will receive an active download button. No placeholder or unofficial download links are shown.</p></div>
     </section>
 
@@ -110,9 +149,9 @@
     <div class="dialog-mark">EB</div>
     <h2 id="dialogTitle">Application</h2>
     <p id="dialogDescription"></p>
-    <div class="dialog-status">NO RELEASE PUBLISHED YET</div>
-    <button class="button button-disabled" disabled>Download unavailable</button>
-    <small>Official APK downloads will be enabled after secure storage and release publishing are configured.</small>
+    <div class="dialog-status" id="dialogStatus">NO RELEASE PUBLISHED YET</div>
+    <a class="button button-disabled" id="dialogDownload" aria-disabled="true" href="#">Download unavailable</a>
+    <small id="dialogSmall">Official APK downloads will be enabled after a verified release is published.</small>
   </dialog>
   <script src="/assets/app.js"></script>
 </body>

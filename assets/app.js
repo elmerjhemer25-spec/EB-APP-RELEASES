@@ -4,6 +4,7 @@ const apps = {
   "Delivery Line Up": "A companion workflow for coordinating delivery line-ups.",
   "EB POS": "Point-of-sale tools for day-to-day business operations."
 };
+
 const search = document.getElementById("searchInput");
 const cards = [...document.querySelectorAll(".app-card")];
 const filters = [...document.querySelectorAll(".filter")];
@@ -30,10 +31,42 @@ filters.forEach(button => button.addEventListener("click", () => {
 }));
 
 const dialog = document.getElementById("appDialog");
+const dialogTitle = document.getElementById("dialogTitle");
+const dialogDescription = document.getElementById("dialogDescription");
+const dialogStatus = document.getElementById("dialogStatus");
+const dialogDownload = document.getElementById("dialogDownload");
+const dialogSmall = document.getElementById("dialogSmall");
+
+function setDownloadLink(el, url, label) {
+  if (!el) return;
+  if (url) {
+    el.href = url;
+    el.removeAttribute("aria-disabled");
+    el.classList.remove("button-disabled");
+    el.classList.add("button-light");
+    if (label) el.textContent = label;
+  } else {
+    el.href = "#";
+    el.setAttribute("aria-disabled", "true");
+    el.classList.add("button-disabled");
+    el.classList.remove("button-light");
+  }
+}
+
 document.querySelectorAll(".details-btn").forEach(button => button.addEventListener("click", () => {
   const name = button.dataset.app;
-  document.getElementById("dialogTitle").textContent = name;
-  document.getElementById("dialogDescription").textContent = apps[name] || "EB application.";
+  dialogTitle.textContent = name;
+  dialogDescription.textContent = apps[name] || "EB application.";
+  if (name === "EB GoRider" && window.goriderRelease) {
+    const r = window.goriderRelease;
+    dialogStatus.textContent = "RELEASE AVAILABLE — " + r.version;
+    dialogSmall.textContent = r.sizeText + " · released " + r.dateText + " · SHA-256 " + r.sha256;
+    setDownloadLink(dialogDownload, r.downloadUrl, "Download APK");
+  } else {
+    dialogStatus.textContent = "NO RELEASE PUBLISHED YET";
+    dialogSmall.textContent = "Official APK downloads will be enabled after a verified release is published.";
+    setDownloadLink(dialogDownload, null, "Download unavailable");
+  }
   dialog.showModal();
 }));
 document.getElementById("dialogClose").addEventListener("click", () => dialog.close());
@@ -41,3 +74,89 @@ dialog.addEventListener("click", event => {
   if (event.target === dialog) dialog.close();
 });
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// ---- GitHub Releases integration (public, no token) ----
+const GITHUB_REPO = "elmerjhemer25-spec/EB-APP-RELEASES";
+const GORIDER_TAG = "eb-gorider-v1.0.5";
+
+function formatBytes(bytes) {
+  if (!bytes && bytes !== 0) return "—";
+  const mb = bytes / (1024 * 1024);
+  return mb.toFixed(2) + " MB";
+}
+
+function formatDate(iso) {
+  if (!iso) return "—";
+  try { return new Date(iso).toISOString().slice(0, 10); }
+  catch (e) { return iso.slice(0, 10); }
+}
+
+async function loadGoriderRelease() {
+  const summary = document.getElementById("gorider-summary");
+  const download = document.getElementById("gorider-download");
+  const relVersion = document.getElementById("rel-version");
+  const relBuild = document.getElementById("rel-build");
+  const relDate = document.getElementById("rel-date");
+  const relSize = document.getElementById("rel-size");
+  const relSha = document.getElementById("rel-sha");
+  const relDownload = document.getElementById("rel-download");
+  const relPage = document.getElementById("rel-page");
+  const relChangelog = document.getElementById("rel-changelog");
+  const relStatus = document.getElementById("rel-status");
+
+  try {
+    const res = await fetch("https://api.github.com/repos/" + GITHUB_REPO + "/releases/tags/" + GORIDER_TAG, {
+      headers: { "Accept": "application/vnd.github+json" }
+    });
+    if (!res.ok) throw new Error("GitHub API responded " + res.status);
+    const data = await res.json();
+    const asset = (data.assets || []).find(a => /\.apk$/i.test(a.name)) || (data.assets || [])[0];
+    if (!asset || !asset.browser_download_url) throw new Error("No APK asset found in release");
+
+    const version = ((data.name || data.tag_name || "").replace(/^EB GoRider\s*/i, "").replace(/^v/i, "").trim()) || "1.0.5";
+    const build = "6";
+    const dateText = formatDate(data.published_at || data.created_at);
+    const sizeText = formatBytes(asset.size);
+    const sha256 = (asset.digest || "").replace(/^sha256:/i, "") || "—";
+
+    window.goriderRelease = {
+      version: version,
+      build: build,
+      dateText: dateText,
+      sizeText: sizeText,
+      sha256: sha256,
+      downloadUrl: asset.browser_download_url,
+      releaseUrl: data.html_url
+    };
+
+    if (summary) summary.textContent = version + " · " + sizeText + " · " + dateText;
+    if (relVersion) relVersion.textContent = version;
+    if (relBuild) relBuild.textContent = build;
+    if (relDate) relDate.textContent = dateText;
+    if (relSize) relSize.textContent = sizeText + " (" + asset.size + " bytes)";
+    if (relSha) relSha.textContent = sha256;
+    setDownloadLink(download, asset.browser_download_url, "Download APK");
+    setDownloadLink(relDownload, asset.browser_download_url, "Download APK");
+    if (relPage) {
+      relPage.href = data.html_url;
+      relPage.removeAttribute("aria-disabled");
+    }
+    if (relChangelog) {
+      const items = [
+        "Rider group chat enhancements, including image sharing and unsend support.",
+        "GPS navigation engine and live address search improvements.",
+        "Customer location sharing and admin pin management updates.",
+        "Push notification support (Firebase Cloud Messaging) for new deliveries.",
+        "Supabase schema migrations for chat, delivery photos, and push dispatch.",
+        "General stability and build improvements."
+      ];
+      relChangelog.innerHTML = items.map(t => "<li>" + t + "</li>").join("");
+    }
+    if (relStatus) relStatus.textContent = "Verified release loaded from GitHub.";
+  } catch (err) {
+    if (summary) summary.textContent = "Release unavailable";
+    if (relStatus) relStatus.textContent = "Could not load release: " + (err && err.message ? err.message : err);
+  }
+}
+
+loadGoriderRelease();
