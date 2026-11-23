@@ -11,8 +11,18 @@ Open `index.html` in a browser. For a local server, from this folder run:
 Then visit `http://localhost:8080`.
 
 ## Netlify
-This is a static starter site. Deploy this folder to Netlify or connect its Git repository.
-The Netlify build publish directory is the project root.
+This is a static starter site. The existing Netlify project `ebappdownloadcenter` is connected
+to this repository for continuous deployment.
+
+- Repository: `elmerjhemer25-spec/EB-APP-RELEASES`
+- Production branch: `main`
+- Base directory: project root
+- Build command: none (static site)
+- Publish directory: `.`
+- Live URL: https://ebappdownloadcenter.netlify.app
+
+Every push to `main` triggers an automatic production deployment. Build settings are also
+declared in `netlify.toml`.
 
 ## Current limitations
 - The public app catalog contains placeholders only.
