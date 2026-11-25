@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EB APK DEPLOY</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="/logo.png" alt="EB" width="38" height="38">
+      <div>
+        <strong>EB APK DEPLOY</strong>
+        <small>RELEASE PUBLISHER</small>
+      </div>
+    </div>
+    <div class="repo">
+      <label class="admin-pw">Admin:
+        <input type="password" id="adminPw" placeholder="password" autocomplete="off">
+      </label>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <div class="eyebrow">OFFICIAL RELEASE PIPELINE</div>
+      <h1>App release panels<span>.</span></h1>
+      <p>
+        Bawat app ay may sariling panel. I-drop ang bagong APK sa panel ng app —
+        babasahin ang version mula sa APK at ilalabas bilang GitHub release.
+        Lalabas ito sa <b>EB APP CENTER</b> bilang <b>UPDATE</b> o <b>DOWNLOAD</b>.
+      </p>
+    </section>
+
+    <section class="section-head">
+      <h2>APPLICATIONS <span id="appCount">0</span></h2>
+      <button class="btn btn-primary btn-sm" id="addAppBtn">+ Add new app</button>
+    </section>
+
+    <section class="hidden" id="addAppForm">
+      <div class="card">
+        <div class="card-head">
+          <h2>Add a new app panel</h2>
+          <button class="icon-btn" id="closeAddBtn" aria-label="Close">×</button>
+        </div>
+        <div class="form-grid">
+          <label>App name
+            <input id="fName" placeholder="e.g. Calculator" autocomplete="off">
+          </label>
+          <label>Package name (optional)
+            <input id="fPackage" placeholder="e.g. com.ebridergo.calculator" autocomplete="off">
+          </label>
+          <label class="full">Description
+            <input id="fDescription" placeholder="What the app does..." autocomplete="off">
+          </label>
+          <label>Category
+            <input id="fCategory" placeholder="e.g. Tools / Utility" autocomplete="off">
+          </label>
+          <label>Icon text (2-3 letters)
+            <input id="fIcon" placeholder="e.g. CA" maxlength="4" autocomplete="off">
+          </label>
+          <label>Icon color
+            <input type="color" id="fColor" value="#2E7D5B">
+          </label>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="saveAppBtn">Save app panel</button>
+          <button class="btn btn-quiet" id="cancelAddBtn">Cancel</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panels" id="panels"></section>
+
+    <section class="card hidden" id="successCard">
+      <div class="success-icon">&#10003;</div>
+      <h2>Release published</h2>
+      <p id="successMsg">The new APK is live.</p>
+      <div class="links">
+        <a id="releaseLink" href="#" target="_blank" rel="noopener">View release on GitHub &#8599;</a>
+        <a id="downloadLink" href="#" target="_blank" rel="noopener">Direct APK download &#8599;</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>Activity log</h2></div>
+      <div class="log" id="log">
+        <div class="log-line muted">Ready. Drop an APK on any app panel...</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Publishable key only (safe for browser). Admin password is typed in the UI.
+    window.EB_CONFIG = {
+      functionUrl: 'https://hpkmbwbcsynluqcmvekm.supabase.co/functions/v1/apk-deploy',
+      anonKey: 'sb_publishable_5-1svbG0WM2swi0F3FIUlg_MNxHxWvs',
+    };
+  </script>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -13,3 +13,6 @@ _backups/
 *.aab
 *.keystore
 *.jks
+
+deploy/config.js
+
