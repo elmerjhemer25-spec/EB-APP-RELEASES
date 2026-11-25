@@ -10,15 +10,6 @@
       "color": "#E2571E"
     },
     {
-      "id": "eb-map-explorer",
-      "name": "EB Map Explorer",
-      "package": "",
-      "description": "Map exploration and location tools for the EB platform.",
-      "category": "Tools / Navigation",
-      "iconText": "EM",
-      "color": "#2F6FED"
-    },
-    {
       "id": "eb-pos",
       "name": "EB POS",
       "package": "",
