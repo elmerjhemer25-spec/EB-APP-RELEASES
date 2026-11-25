@@ -44,6 +44,15 @@
       "category": "Tools / Utility",
       "iconText": "CA",
       "color": "#2e7d5b"
+    },
+    {
+      "id": "test1",
+      "name": "test1",
+      "package": "",
+      "description": "",
+      "category": "",
+      "iconText": "T",
+      "color": "#7f2f78"
     }
   ]
 }
