@@ -93,6 +93,7 @@ function buildPanel(app) {
         '<p class="desc">' + esc(app.description || 'No description yet.') + '</p>' +
         (app.category ? '<div class="cat">' + esc(app.category) + '</div>' : '') +
       '</div>' +
+      '<button class="del-btn" data-del="' + esc(app.id) + '" title="Delete app panel" aria-label="Delete ' + esc(app.name) + '">&#128465;</button>' +
     '</div>' +
     '<div class="live-row">' + liveHtml + '</div>' +
     '<div class="dropzone" tabindex="0" role="button" data-app="' + esc(app.id) + '">' +
@@ -123,6 +124,10 @@ function buildPanel(app) {
     if (input.files.length) handleFile(app, input.files[0], zone, input);
   });
 
+  // Delete this app panel (server-side catalog entry).
+  const delBtn = el.querySelector('[data-del]');
+  delBtn.addEventListener('click', () => deleteApp(app));
+
   // Restore a previous inspect result if any
   if (results[app.id]) {
     renderResult(app, results[app.id]);
@@ -130,6 +135,30 @@ function buildPanel(app) {
   }
 
   return el;
+}
+
+// ---- delete app panel -----------------------------------------------------
+async function deleteApp(app) {
+  const confirm = window.confirm(
+    'Delete the "' + app.name + '" panel from EB APP CENTER?\n\n' +
+    'This removes the panel from the catalog. Published GitHub releases are NOT deleted.'
+  );
+  if (!confirm) return;
+  log('[' + app.name + '] Deleting panel...');
+  try {
+    const res = await fetch(endpoint('delete-app') + '&id=' + encodeURIComponent(app.id), {
+      method: 'POST',
+      headers: headers(),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.ok) throw new Error(data.error || 'Delete failed.');
+    log('[' + app.name + '] Panel deleted.', 'ok');
+    delete results[app.id];
+    await loadApps();
+  } catch (err) {
+    log('[' + app.name + '] Delete error: ' + err.message, 'err');
+    alert(err.message);
+  }
 }
 
 // ---- per-panel inspect ----------------------------------------------------

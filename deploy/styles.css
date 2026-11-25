@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
   --bg: #0b0b0c; --panel: #141416; --panel2: #1b1b1e; --line: #2b2b30;
@@ -130,6 +130,9 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--
   color: var(--text); padding: 7px 10px; font: 11px var(--mono); width: 120px; outline: none;
 }
 .admin-pw input:focus { border-color: var(--green); }
+
+.del-btn { background:none; border:0; color:#777; cursor:pointer; font-size:16px; padding:4px 8px; border-radius:6px; flex-shrink:0; line-height:1; }
+.del-btn:hover { color:#ff7b7b; background:#3a1a1a; }
 @media (max-width: 700px) {
   .wrap { width: calc(100% - 30px); padding-top: 28px; }
   .repo { display: none; }
