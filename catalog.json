@@ -71,15 +71,6 @@
       "category": "utility",
       "iconText": "ES",
       "color": "#7f2f65"
-    },
-    {
-      "id": "zz-delete-test",
-      "name": "ZZ-DELETE-TEST",
-      "package": "",
-      "description": "temp",
-      "category": "",
-      "iconText": "ZZ",
-      "color": "#2E7D5B"
     }
   ]
 }
