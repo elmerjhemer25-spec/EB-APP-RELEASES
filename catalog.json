@@ -62,6 +62,15 @@
       "category": "",
       "iconText": "T",
       "color": "#2e7d5b"
+    },
+    {
+      "id": "eb-share",
+      "name": "EB Share",
+      "package": "",
+      "description": "Send files",
+      "category": "utility",
+      "iconText": "ES",
+      "color": "#7f2f65"
     }
   ]
 }
