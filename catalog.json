@@ -28,15 +28,6 @@
       "color": "#8A5CF0"
     },
     {
-      "id": "calculator",
-      "name": "Calculator",
-      "package": "com.ebridergo.calculator",
-      "description": "Simple calculator app for everyday EB calculations.",
-      "category": "Tools / Utility",
-      "iconText": "CA",
-      "color": "#2e7d5b"
-    },
-    {
       "id": "eb-share",
       "name": "EB Share",
       "package": "com.ebshare.app",
