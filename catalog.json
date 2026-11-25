@@ -1,0 +1,49 @@
+{
+  "apps": [
+    {
+      "id": "eb-gorider",
+      "name": "EB GoRider",
+      "package": "com.ebridergo.eb_rider_go",
+      "description": "Rider navigation and delivery workflow platform within the EB ecosystem.",
+      "category": "Mobility / Rider Platform",
+      "iconText": "GR",
+      "color": "#E2571E"
+    },
+    {
+      "id": "eb-map-explorer",
+      "name": "EB Map Explorer",
+      "package": "",
+      "description": "Map exploration and location tools for the EB platform.",
+      "category": "Tools / Navigation",
+      "iconText": "EM",
+      "color": "#2F6FED"
+    },
+    {
+      "id": "delivery-line-up",
+      "name": "Delivery Line Up",
+      "package": "",
+      "description": "A companion workflow for coordinating delivery line-ups.",
+      "category": "Mobility / Operations",
+      "iconText": "DL",
+      "color": "#1FA97A"
+    },
+    {
+      "id": "eb-pos",
+      "name": "EB POS",
+      "package": "",
+      "description": "Point-of-sale tools for day-to-day business operations.",
+      "category": "Business / Retail",
+      "iconText": "POS",
+      "color": "#8A5CF0"
+    },
+    {
+      "id": "calculator",
+      "name": "Calculator",
+      "package": "com.ebridergo.calculator",
+      "description": "Simple calculator app for everyday EB calculations.",
+      "category": "Tools / Utility",
+      "iconText": "CA",
+      "color": "#2e7d5b"
+    }
+  ]
+}
