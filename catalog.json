@@ -46,15 +46,6 @@
       "color": "#2e7d5b"
     },
     {
-      "id": "test2",
-      "name": "test2",
-      "package": "",
-      "description": "",
-      "category": "",
-      "iconText": "T",
-      "color": "#2e7d5b"
-    },
-    {
       "id": "eb-share",
       "name": "EB Share",
       "package": "com.ebshare.app",
