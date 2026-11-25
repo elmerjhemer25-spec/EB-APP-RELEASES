@@ -19,15 +19,6 @@
       "color": "#2F6FED"
     },
     {
-      "id": "delivery-line-up",
-      "name": "Delivery Line Up",
-      "package": "",
-      "description": "A companion workflow for coordinating delivery line-ups.",
-      "category": "Mobility / Operations",
-      "iconText": "DL",
-      "color": "#1FA97A"
-    },
-    {
       "id": "eb-pos",
       "name": "EB POS",
       "package": "",
