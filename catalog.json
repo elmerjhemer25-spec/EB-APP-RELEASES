@@ -53,6 +53,15 @@
       "category": "",
       "iconText": "T",
       "color": "#7f2f78"
+    },
+    {
+      "id": "test2",
+      "name": "test2",
+      "package": "",
+      "description": "",
+      "category": "",
+      "iconText": "T",
+      "color": "#2e7d5b"
     }
   ]
 }
